@@ -1,0 +1,32 @@
+{
+  "name": "laravel-elixir-copy-fonts",
+  "version": "0.0.1",
+  "description": "Copy fonts from various places to a configurable output directory eg public/fonts/",
+  "keywords": [
+    "laravel",
+    "elixir",
+    "fonts"
+  ],
+  "homepage": "https://github.com/grandadevans/laravel-elixir-copy-fonts",
+  "bugs": {
+    "url": "https://github.com/grandadevans/laravel-elixir-copy-fonts/issues",
+    "email": "john@grandadevans.com"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "John Evans",
+    "email": "john@grandadevans.com",
+    "url": "http://grandadevans.com"
+  },
+  "main": "index.js",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/grandadevans/laravel-elixir-copy-fonts.git"
+  },
+  "private": false,
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "laravel-elixir": "^5.0.0",
+    "gulp-copy": "0.0.*"
+  }
+}
