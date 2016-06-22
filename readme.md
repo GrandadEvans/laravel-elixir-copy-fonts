@@ -33,7 +33,7 @@ First pull the extension in with
 npm -i laravel-elixir-copy-fonts
 ```
 and then add it to your gulpfile
-```js
+```javascript
 require('laravel-elixir-copy-fonts');
 ```
 
@@ -41,7 +41,7 @@ require('laravel-elixir-copy-fonts');
 ```mix.fonts([string|array src [, string dest]])```
 
 ## Usage example
-```js
+```javascript
 elixir(function(mix) {
     mix
         .fonts([
@@ -64,7 +64,7 @@ Both source and output paths are optional and are set to...
  * Default output directory: ```./public/fonts```
  
 ### No arguments
-```js
+```javascript
 elixir(function(mix) {
     mix.fonts();
  });
@@ -74,7 +74,7 @@ This will copy all fonts recursively from the default source directory
 destination)
 
 ### Single arguments
-```js
+```javascript
 elixir(function(mix) {
     mix.fonts('./bower_components/font-awesome/fonts');
  });
@@ -83,7 +83,7 @@ All fonts will be recursively copied from this directory to the default
 public directory.
 
 ### Array of fonts/directories
-```js
+```javascript
 elixir(function(mix) {
     mix.fonts([
         './bower_components/font-awesome/fonts',
@@ -97,7 +97,7 @@ the array to the default output path.
 ### Output directory
 The default output directory is ```public/fonts``` but an optional 
 output directory can be passed as the second argument eg
-```js
+```javascript
 elixir(function(mix) {
     mix.fonts('purchased-fonts', './public/css/fonts');
     //or
