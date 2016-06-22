@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var Elixir = require('laravel-elixir');
-var copy = require('gulp-copy');
 
 /**
  * Extend Laravel Elixir so that it can call the fonts task
@@ -12,18 +11,7 @@ Elixir.extend('fonts', function (src, output, baseDir) {
 
     // Create the task itself
     new Elixir.Task('fonts', function () {
-
-        // The this.log statement will print the information messages when the task is run
-        this.log(paths.src, paths.output);
-
-        return gulp
-            .src(paths.src.path)
-            .pipe(gulp.dest(paths.output.baseDir))
-            .pipe(new Elixir.Notification('Fonts Copied!'))
-            .on('error', function(e) {
-                new Elixir.Notification().error(e, 'Font Copying Has Failed!');
-                this.emit('end');
-            });
+        return gulpTask.call(this, paths);
     })
     .watch(paths.src.path)
     .ignore(paths.output.path);
@@ -83,4 +71,21 @@ var addFontProperty = function() {
 
     // Now that we have added the fonts property we can return the new config object
     return Elixir.config;
+};
+
+var gulpTask = function(paths) {
+
+    // The this.log statement will print the information messages when the task is run
+    this.log(paths.src, paths.output);
+
+    return (
+        gulp
+        .src(paths.src.path)
+        .pipe(gulp.dest(paths.output.baseDir))
+        .on('error', function(e) {
+            new Elixir.Notification().error(e, 'Font Copying Has Failed!');
+            this.emit('end');
+        })
+        .pipe(new Elixir.Notification('Fonts Copied!'))
+    );
 };
