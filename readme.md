@@ -70,8 +70,8 @@ elixir(function(mix) {
  });
 ```
 This will copy all fonts recursively from the default source directory
-```resources/assets/fonts``` to the default destination
- ```public/fonts```
+```resources/assets/fonts``` to ```public/fonts``` (the default 
+destination)
 
 ### Single arguments
 ```js
@@ -117,9 +117,9 @@ A path starting with ```./``` eg
 gulpfile.js.
 ### Paths relative to the default source directory
 A path not starting with ```./``` eg ```posh-font``` will be taken 
-as a path relative to the default source, so for this example it would 
-be
-```./resources/assets/fonts/posh-fonts```
+as a path relative to the default source, so for this example 
+```./resources/assets/fonts/posh-fonts``` would be the source path.
+
 ### Directory paths
 This extension uses the same codebase as methods such as ```scripts()```
  (I like to make my life easy) and so it can tell the difference between
