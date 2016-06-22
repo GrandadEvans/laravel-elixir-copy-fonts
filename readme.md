@@ -1,6 +1,24 @@
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 # Laravel Elixir Copy Fonts extension
+[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
+## Contents
+ * [Introduction](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#introduction)
+ * [Installation](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#installation)
+ * [Usage format](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#usage-format)
+ * [Usage example](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#usage-example)
+ * [Arguments](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#arguments  )
+    * [Defaults](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#defaults)
+    * [No Arguments](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#no-arguments)
+    * [Single Arguments](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#single-arguments)
+    * [Array of fonts/directories](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#array-of-fontsdirectories)
+ * [Source and output paths](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#source-and-output-paths)
+    * [Paths relative to the gulpfile](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#paths-relative-to-the-gulpfile)
+    * [Paths relative to the default source directory](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#paths-relative-to-the-default-source-directory)
+    * [Directory Paths](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#directory-paths)
+ * [Support](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#support)
+ * [License](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#license)
+
+## Introduction
 This extension is aimed at simplifying gulpfiles (and mine in
 particular).
 
@@ -92,7 +110,7 @@ elixir(function(mix) {
 
 ## Source and output paths
 Please take note of the paths above:
-### Paths relative to the gulpfile.js
+### Paths relative to the gulpfile
 A path starting with './' eg './bower_components/font-awesome/fonts'
 is relative to your gulpfile.js.
 ### Paths relative to the default source directory
@@ -107,7 +125,6 @@ directories and files so a source path of 'posh-fonts' will become
 
 ## Support
 Oh...erm...support :-/ Just [raise an issue](https://github.com/GrandadEvans/laravel-elixir-copy-fonts/issues])
-
 
 ## License
 
