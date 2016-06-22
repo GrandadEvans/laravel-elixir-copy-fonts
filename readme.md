@@ -29,7 +29,7 @@ extension to tidy my code up and make my life easier.
 
 ## Installation
 First pull the extension in with
-```sh
+```shell
 npm -i laravel-elixir-copy-fonts
 ```
 and then add it to your gulpfile
