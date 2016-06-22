@@ -60,8 +60,8 @@ Exactly the same as the other Elixir methods such as ```mix.styles()```
 
 ### Defaults
 Both source and output paths are optional and are set to...
-Default source directory: './resources/assets/fonts'
-Default output directory: './public/fonts'
+ * Default source directory: './resources/assets/fonts'
+ * Default output directory: './public/fonts'
  
 ### No Arguments
 ```js
@@ -98,7 +98,7 @@ The default output directory is 'public/fonts' but an optional output
 directory can be passed as the second argument eg
 ```js
 elixir(function(mix) {
-    mix.fonts('purchased-fonts', './public/css/fonts);
+    mix.fonts('purchased-fonts', './public/css/fonts');
     //or
     mix.fonts([
         'font-path-1',
