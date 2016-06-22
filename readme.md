@@ -19,11 +19,11 @@
  * [License](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#license)
 
 ## Introduction
-This extension is aimed at simplifying gulpfiles (and mine in
-particular).
+This [Laravel Elixir](https://laravel.com/docs/master/elixir) extension is aimed at simplifying gulpfiles 
+(and mine in particular).
 
 Instead of my gulpfile having all sorts of copy calls copying things
-like font-awesome fonts and site fonts to a temporary directory before 
+like [font-awesome](http://fontawesome.io/) fonts and site fonts to a temporary directory before 
 being pushed en-mass to my public folder I thought I'd create a quick 
 extension to tidy my code up and make my life easier.
 
@@ -38,7 +38,7 @@ require('laravel-elixir-copy-fonts');
 ```
 
 ## Usage format
-```fonts([string|array src [, string dest]])```
+```mix.fonts([string|array src [, string dest]])```
 
 ## Usage example
 ```js
@@ -63,7 +63,7 @@ Both source and output paths are optional and are set to...
  * Default source directory: ```./resources/assets/fonts```
  * Default output directory: ```./public/fonts```
  
-### No Arguments
+### No arguments
 ```js
 elixir(function(mix) {
     mix.fonts();
@@ -71,8 +71,8 @@ elixir(function(mix) {
 ```
 This will copy all fonts recursively from the default source directory
 ```resources/assets/fonts``` to the default destination
- ```public/fonts```.
- 
+ ```public/fonts```
+
 ### Single arguments
 ```js
 elixir(function(mix) {
@@ -119,7 +119,7 @@ gulpfile.js.
 A path not starting with ```./``` eg ```posh-font``` will be taken 
 as a path relative to the default source, so for this example it would 
 be
-```./resources/assets/fonts/posh-fonts```.
+```./resources/assets/fonts/posh-fonts```
 ### Directory paths
 This extension uses the same codebase as methods such as ```scripts()```
  (I like to make my life easy) and so it can tell the difference between
