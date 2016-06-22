@@ -10,6 +10,7 @@
     * [Defaults](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#defaults)
     * [No Arguments](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#no-arguments)
     * [Single Arguments](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#single-arguments)
+    * [Null Arguments](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#null-arguments)
     * [Array of fonts/directories](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#array-of-fontsdirectories)
  * [Source and output paths](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#source-and-output-paths)
     * [Paths relative to the gulpfile](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#paths-relative-to-the-gulpfile)
@@ -69,7 +70,7 @@ Both source and output paths are optional and are set to...
 ```javascript
 elixir(function(mix) {
     mix.fonts();
- });
+});
 ```
 This will copy all fonts recursively from the default source directory
 `resources/assets/fonts` to `public/fonts` (the default 
@@ -79,10 +80,21 @@ destination)
 ```javascript
 elixir(function(mix) {
     mix.fonts('./bower_components/font-awesome/fonts');
- });
+});
 ```
 All fonts will be recursively copied from this directory to the default
 public directory.
+
+### Null arguments
+```javascript
+elixir(function(mix) {
+    mix.fonts(null, './public/css/fonts');
+});
+```
+If you just disagree with me on where to keep font files and you prefer
+ to keep them in `public/css/fonts` then you can simple pass `null` in
+ as the first argument and it will use the default source path of
+ `resources/assets/fonts`...simple.
 
 ### Array of fonts/directories
 ```javascript
@@ -91,7 +103,7 @@ elixir(function(mix) {
         './bower_components/font-awesome/fonts',
         'purchased-fonts'
     ]);
- });
+});
 ```
 This will copy all fonts recursively from any paths passed as part of
 the array to the default output path.
@@ -108,7 +120,7 @@ elixir(function(mix) {
         'font-path-2'
     ],
     './public/css/fonts');
- });
+});
 ```
 
 ## Source and output paths
