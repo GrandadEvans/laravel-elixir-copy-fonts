@@ -24,7 +24,7 @@
     "url" : "https://github.com/grandadevans/laravel-elixir-copy-fonts.git"
   },
   "private": false,
-  "devDependencies": {
+  "dependencies": {
     "gulp": "^3.9.1",
     "laravel-elixir": "^5.0.0",
     "gulp-copy": "0.0.*"
