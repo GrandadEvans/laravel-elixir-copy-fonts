@@ -1,27 +1,114 @@
-# Laravel PHP Framework
-
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+# Laravel Elixir Copy Fonts extension
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+This extension is aimed at simplifying gulpfiles (and mine in
+particular).
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+Instead of my gulpfile having all sorts of copy calls copying things
+like font-awesome fonts and site fonts to a temporary directory before 
+being pushed en-mass to my public folder I thought I'd create a quick 
+extension to tidy my code up and make my life easier.
 
-## Official Documentation
+## Installation
+First pull the extension in with
+```sh
+npm -i laravel-elixir-copy-fonts
+```
+and then add it to your gulpfile
+```js
+require('laravel-elixir-copy-fonts');
+```
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+## Usage format
+```fonts([string|array src [, string dest]])```
 
-## Contributing
+## Usage example
+```js
+elixir(function(mix) {
+    mix
+        .fonts([
+            './bower_components/font-awesome/fonts',
+            'custom-fonts'
+        ])
+        .styles(...)
+        .scripts(...);
+});
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+## Arguments
+Exactly the same as the other Elixir methods such as ```mix.styles()```
+ and ```scripts()``` laravel-elixir-copy-fonts can accept a variety of 
+ data.
 
-## Security Vulnerabilities
+### Defaults
+Both source and output paths are optional and are set to...
+Default source directory: './resources/assets/fonts'
+Default output directory: './public/fonts'
+ 
+### No Arguments
+```js
+elixir(function(mix) {
+    mix.fonts();
+ });
+```
+This will copy all fonts recursively from the default source directory
+'resources/assets/fonts' to the default destination 'public/fonts'.
+ 
+### Single arguments
+```js
+elixir(function(mix) {
+    mix.fonts('./bower_components/font-awesome/fonts');
+ });
+```
+All fonts will be recursively copied from this directory to the default
+public directory.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+### Array of fonts/directories
+```js
+elixir(function(mix) {
+    mix.fonts([
+        './bower_components/font-awesome/fonts',
+        'purchased-fonts'
+    ]);
+ });
+```
+This will copy all fonts recursively from any paths passed as part of
+the array to the default output path.
+
+### Output directory
+The default output directory is 'public/fonts' but an optional output
+directory can be passed as the second argument eg
+```js
+elixir(function(mix) {
+    mix.fonts('purchased-fonts', './public/css/fonts);
+    //or
+    mix.fonts([
+        'font-path-1',
+        'font-path-2'
+    ],
+    './public/css/fonts');
+ });
+```
+
+## Source and output paths
+Please take note of the paths above:
+### Paths relative to the gulpfile.js
+A path starting with './' eg './bower_components/font-awesome/fonts'
+is relative to your gulpfile.js.
+### Paths relative to the default source directory
+A path not starting with './' eg 'posh-font' will be taken as a path
+relative to the default source, so for this example it would be
+'./resources/assets/fonts/posh-fonts'.
+### Directory paths
+This extension uses the same codebase as methods such as 'scripts' (I 
+like to make my life easy) and so it can tell the difference between
+directories and files so a source path of 'posh-fonts' will become
+'posh-fonts/**/*' if it is detected as a directory.
+
+## Support
+Oh...erm...support :-/ Just [raise an issue](https://github.com/GrandadEvans/laravel-elixir-copy-fonts/issues])
+
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+The laravel-elixir-copy-fonts extension is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
