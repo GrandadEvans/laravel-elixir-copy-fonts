@@ -2,7 +2,7 @@
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
 ## Contents
- * [Introduction](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#introduction)
+ * [Introduction](#introduction)
  * [Installation](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#installation)
  * [Usage format](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#usage-format)
  * [Usage example](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#usage-example)

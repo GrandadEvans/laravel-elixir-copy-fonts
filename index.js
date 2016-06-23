@@ -26,23 +26,11 @@ Elixir.extend('fonts', function (src, output, baseDir, options) {
  */
 const filterByFileTypes = (types) => {
     let typeString = '';
-    let i;
 
     if (types.length) {
-        typeString += '/**/*.';
-
-        // Is the types variable an array (all arrays are objects in javascript)
-        if (typeof types === "object") {
-            typeString += '{';
-            for (i = 0; i < types.length; i++) {
-                typeString += types[i] + ',';
-            }
-            typeString += '}';
-            typeString = typeString.replace(',}', '}');
-        } else {
-            // else if the types variable is a string then we can just add it as it is
-            typeString += types;
-        }
+        // Is the types variable an array (all arrays are objects in javascript etc etc)
+        typeString = (typeof types === "object") ? '{'+types.join(',')+'}' : types ;
+        typeString = '/**/*.' + typeString;
     }
 
     return typeString;
