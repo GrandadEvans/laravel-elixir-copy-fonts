@@ -6,12 +6,15 @@
  * [Installation](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#installation)
  * [Usage format](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#usage-format)
  * [Usage example](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#usage-example)
- * [Arguments](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#arguments  )
+ * [Arguments](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#arguments)
     * [Defaults](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#defaults)
     * [No Arguments](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#no-arguments)
     * [Single Arguments](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#single-arguments)
     * [Null Arguments](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#null-arguments)
     * [Array of fonts/directories](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#array-of-fontsdirectories)
+    * [Output directories](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#output-directories)
+ * [Options](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#options)
+    * [Limit by filetype](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#limit-by-filetype)
  * [Source and output paths](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#source-and-output-paths)
     * [Paths relative to the gulpfile](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#paths-relative-to-the-gulpfile)
     * [Paths relative to the default source directory](https://github.com/GrandadEvans/laravel-elixir-copy-fonts#paths-relative-to-the-default-source-directory)
@@ -120,6 +123,37 @@ elixir(function(mix) {
         'font-path-2'
     ],
     './public/css/fonts');
+});
+```
+
+## Options
+### Limit by filetype
+You can limit the task to specific font types, for instance if you know
+ that your target audience will only ever use one font type. In such 
+ situations you could pass an options object as the last argument 
+ containing the `filetypes` property...as such.
+```javascript
+elixir(function(mix) {
+    mix.fonts(
+        'purchased-fonts',    // src directory
+        './public/css/fonts', // output directory
+        './',                 // base directory
+        {
+            filetypes: [
+                'svg',
+                'otf'
+            ]                 // limit to just otf and svg fonts
+        }
+    );
+    //or
+    mix.fonts(
+       'purchased-fonts',    // src directory
+       './public/css/fonts', // output directory
+       './',                 //  base directory
+       {
+            filetypes: 'svg' // limit to just svg files
+        }
+    );
 });
 ```
 
