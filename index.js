@@ -4,42 +4,77 @@ var Elixir = require('laravel-elixir');
 /**
  * Extend Laravel Elixir so that it can call the fonts task
  */
-Elixir.extend('fonts', function (src, output, baseDir) {
-    
+Elixir.extend('fonts', function (src, output, baseDir, options) {
+
     // Retrieve the paths that should be used
-    var paths = prepGulpPaths(src, output, baseDir);
+    const paths = prepGulpPaths(src, output, baseDir, options);
 
     // Create the task itself
     new Elixir.Task('fonts', function () {
         return gulpTask.call(this, paths);
     })
-    .watch(paths.src.path)
-    .ignore(paths.output.path);
+        .watch(paths.src.path)
+        .ignore(paths.output.path);
 });
+
+/**
+ * If specific file types have been passed in then set up the gulp.src() filter string
+ *
+ * @param   {String|Array}   types
+ *
+ * @returns {string}
+ */
+const filterByFileTypes = (types) => {
+    let typeString = '';
+    let i;
+
+    if (types.length) {
+        typeString += '/**/*.';
+
+        // Is the types variable an array (all arrays are objects in javascript)
+        if (typeof types === "object") {
+            typeString += '{';
+            for (i = 0; i < types.length; i++) {
+                typeString += types[i] + ',';
+            }
+            typeString += '}';
+            typeString = typeString.replace(',}', '}');
+        } else {
+            // else if the types variable is a string then we can just add it as it is
+            typeString += types;
+        }
+    }
+
+    return typeString;
+};
 
 /**
  * Prep the Gulp src and output paths.
  *
- * @param  {string|Array} src
- * @param  {string|null}  baseDir
- * @param  {string|null}  output
+ * @param  {string|Array|null}  src
+ * @param  {string|null}        baseDir
+ * @param  {string|null}        output
+ *
  * @return {GulpPaths}
  */
-var prepGulpPaths = function(src, output, baseDir) {
-    var config = addFontProperty();
+let prepGulpPaths = (src, output, baseDir, options) => {
+    let config = addFontProperty();
+    let typeString = '';
+
     baseDir = baseDir || './';
+    typeString = filterByFileTypes(options.filetypes);
 
     return new Elixir.GulpPaths()
-        .src(src || config.get('assets.fonts.folder'), baseDir)
+        .src(src || config.get('assets.fonts.folder') + typeString, baseDir)
         .output(output || config.get('public.fonts.outputFolder'), baseDir);
 };
 
 /**
  * As the fonts property is not in the config by default we can add it here
- * 
+ *
  * @returns {*}
  */
-var addFontProperty = function() {
+let addFontProperty = () => {
     Elixir.config.fonts = {
 
         /*
@@ -73,19 +108,26 @@ var addFontProperty = function() {
     return Elixir.config;
 };
 
-var gulpTask = function(paths) {
+/**
+ * Run the actual task
+ *
+ * @param paths
+ *
+ * @returns {*}
+ */
+var gulpTask = function (paths) {
 
     // The this.log statement will print the information messages when the task is run
     this.log(paths.src, paths.output);
 
     return (
         gulp
-        .src(paths.src.path)
-        .pipe(gulp.dest(paths.output.baseDir))
-        .on('error', function(e) {
-            new Elixir.Notification().error(e, 'Font Copying Has Failed!');
-            this.emit('end');
-        })
-        .pipe(new Elixir.Notification('Fonts Copied!'))
+            .src(paths.src.path)
+            .pipe(gulp.dest(paths.output.baseDir))
+            .on('error', function (e) {
+                new Elixir.Notification().error(e, 'Font Copying Has Failed!');
+                this.emit('end');
+            })
+            .pipe(new Elixir.Notification('Fonts Copied!'))
     );
 };
