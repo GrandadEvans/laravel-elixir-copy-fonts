@@ -1,6 +1,6 @@
 {
   "name": "laravel-elixir-copy-fonts",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Copy fonts from various places to a configurable output directory eg public/fonts/",
   "keywords": [
     "laravel",

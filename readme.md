@@ -180,3 +180,7 @@ Oh...erm...support :-/ Just [raise an issue](https://github.com/GrandadEvans/lar
 ## License
 
 The *laravel-elixir-copy-fonts* extension is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+## Changelist
+* 0.0.3 Using strict mode for es2015
+* 0.0.2 Initial deployment
